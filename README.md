@@ -1,4 +1,4 @@
-Hi this is Vamsi Krishna, here is my portfolio built in react using next js
+Hi this is Bhanu, here is my portfolio built in react using next js
 
 ### Resources Used in This Project
 

@@ -72,7 +72,7 @@ const AboutPage = () => {
                     <img src={astronaut} alt="spaceman" />
                 </Spaceman>
                 <Main>
-                    I'm a Full stack developer located in India. I love to create simple yet beautiful and complex web applications with great user experience.
+                    I'm a Full stack developer located in Toronto, Canada. I love to create simple yet beautiful and complex web applications with great user experience.
                     <br /> <br />
                     Exposure and insight gained about end- to- end Software Development Life Cycle and
                     core programming languages.

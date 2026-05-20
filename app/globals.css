@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --font-geist-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-geist-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-bricolage: 'Bricolage Grotesque', Georgia, serif;
+}
+
+html,
+body {
+  background: #0a0a0f;
+  color: #fafafa;
+  font-family: var(--font-geist-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* Subtle starfield via radial gradients */
+.bg-starfield {
+  background-image:
+    radial-gradient(1px 1px at 25% 30%, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1px 1px at 75% 70%, rgba(255, 255, 255, 0.4), transparent),
+    radial-gradient(1px 1px at 50% 50%, rgba(255, 255, 255, 0.3), transparent),
+    radial-gradient(1.5px 1.5px at 10% 80%, rgba(255, 255, 255, 0.4), transparent),
+    radial-gradient(1px 1px at 90% 20%, rgba(255, 255, 255, 0.5), transparent);
+  background-size: 200px 200px, 250px 250px, 180px 180px, 300px 300px, 220px 220px;
+  background-repeat: repeat;
+}
+
+/* Mesh gradient layer */
+.bg-mesh {
+  background:
+    radial-gradient(at 20% 30%, rgba(167, 139, 250, 0.18) 0px, transparent 50%),
+    radial-gradient(at 80% 20%, rgba(34, 211, 238, 0.15) 0px, transparent 50%),
+    radial-gradient(at 70% 80%, rgba(251, 113, 133, 0.10) 0px, transparent 50%),
+    radial-gradient(at 30% 90%, rgba(167, 139, 250, 0.12) 0px, transparent 50%);
+}
+
+/* Soft grid */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* Glass surface */
+.glass {
+  background: rgba(18, 18, 26, 0.6);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Gradient text */
+.text-gradient {
+  background: linear-gradient(135deg, #fafafa 0%, #a78bfa 50%, #22d3ee 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% auto;
+}
+
+.text-gradient-violet {
+  background: linear-gradient(135deg, #a78bfa 0%, #fb7185 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0f;
+}
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
+}
+
+/* Hide default cursor on devices that have a pointer */
+@media (hover: hover) and (pointer: fine) {
+  body.custom-cursor-active,
+  body.custom-cursor-active * {
+    cursor: none !important;
+  }
+}
+
+/* Soft glow utility */
+.glow-violet {
+  box-shadow: 0 0 40px rgba(167, 139, 250, 0.25), 0 0 80px rgba(167, 139, 250, 0.1);
+}
+.glow-cyan {
+  box-shadow: 0 0 40px rgba(34, 211, 238, 0.25), 0 0 80px rgba(34, 211, 238, 0.1);
+}
+
+/* AI Twin orb glow pulse */
+@keyframes orbPulse {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.08); }
+}
+.orb-pulse { animation: orbPulse 2.4s ease-in-out infinite; }
+
+/* Marquee-ish slow drift */
+@keyframes drift {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.drift { animation: drift 40s linear infinite; }
+
+/* Thinking dots */
+@keyframes thinkingDot {
+  0%, 80%, 100% { opacity: 0.2; transform: translateY(0); }
+  40% { opacity: 1; transform: translateY(-3px); }
+}
+.thinking-dot { animation: thinkingDot 1.2s ease-in-out infinite; }
+.thinking-dot:nth-child(2) { animation-delay: 0.15s; }
+.thinking-dot:nth-child(3) { animation-delay: 0.3s; }
+
+/* Selection */
+::selection {
+  background: rgba(167, 139, 250, 0.35);
+  color: #fafafa;
+}

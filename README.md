@@ -1,78 +1,46 @@
-Hi this is Vamsi Krishna, here is my portfolio built in react using next js
+# vkrish-portfolio · v2
 
-### Resources Used in This Project
+A 2026 rebuild of Vamsi Krishna's portfolio. Next.js 15 + React 19, 3D yin-yang centerpiece, AI twin you can talk to.
 
-Design in : https://www.figma.com/ <br />
-Svg Icons from :https://fontawesome.com/ <br />
-Spaceman 3D Image from : https://www.figma.com/community/plugin/769588393361258724/Vectary-3D-Elements <br />
-Audio: You said it Song by Claire Margot <br />
-Background Photo by <a href="https://unsplash.com/@impatrickt?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Patrick Tomasso</a> on <a href="https://unsplash.com/s/photos/news-paper?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+## Run locally
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+```bash
+npm install
+npm run dev
+```
 
-## Available Scripts
+Open http://localhost:3000.
 
-In the project directory, you can run:
+## Environment variables
 
-### `npm start`
+Copy `.env.example` to `.env.local` and fill in:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```
+ANTHROPIC_API_KEY=sk-ant-...
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Without a key the AI twin falls back to a friendly stub so the UI still demos.
 
-### `npm test`
+## What's inside
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- `app/` — Next.js App Router. One page per route.
+- `app/api/chat/route.ts` — Streaming Claude endpoint for the AI twin.
+- `components/three/YinYangOrb.tsx` — Shader-driven 3D orb (react-three-fiber).
+- `components/ai-twin/AITwin.tsx` — Chat panel with browser STT/TTS.
+- `components/sections/` — Hero, marquee, projects, timeline, contact CTA.
+- `components/ui/` — Nav, custom cursor, mesh background, section titles.
+- `lib/resume.ts` — Single source of truth for resume content. Edit here.
+- `lib/system-prompt.ts` — System prompt for the AI twin, auto-built from resume.
 
-### `npm run build`
+## Replacing project images
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Drop PNGs into `public/projects/` matching the names referenced in `lib/resume.ts`:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- `daaks.png`
+- `mcp-tradeview.png`
+- `ai-agents.png`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Deploy
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This is a stock Next.js 15 app — Vercel and Netlify deploy it without config. Set
+`ANTHROPIC_API_KEY` as an environment variable on the host.

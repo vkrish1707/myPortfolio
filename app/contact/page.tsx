@@ -5,7 +5,7 @@ import { Mail, Linkedin, Sparkles, MapPin, Phone } from 'lucide-react';
 import SectionTitle from '@/components/ui/SectionTitle';
 import AITwin from '@/components/ai-twin/AITwin';
 import { profile } from '@/lib/resume';
-import YinYangOrb from '@/components/three/YinYangOrbClient';
+import YinYangSymbol from '@/components/ui/YinYangSymbol';
 
 export default function ContactPage() {
   return (
@@ -79,7 +79,7 @@ export default function ContactPage() {
               transition={{ duration: 0.7 }}
               className="h-80 lg:h-96"
             >
-              <YinYangOrb state="idle" size="md" />
+              <YinYangSymbol state="idle" size="md" parallax />
             </motion.div>
           </div>
         </div>

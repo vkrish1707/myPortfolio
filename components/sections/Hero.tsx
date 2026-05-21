@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 import { profile } from '@/lib/resume';
-import YinYangOrb from '@/components/three/YinYangOrbClient';
+import YinYangSymbol from '@/components/ui/YinYangSymbol';
 
 export default function Hero() {
   return (
@@ -95,7 +95,7 @@ export default function Hero() {
           transition={{ duration: 0.9, delay: 0.2 }}
           className="relative h-[28rem] lg:h-[34rem] flex items-center justify-center"
         >
-          <YinYangOrb state="idle" size="lg" />
+          <YinYangSymbol state="idle" size="lg" parallax />
           {/* Caption */}
           <div className="absolute bottom-2 left-1/2 -translate-x-1/2 text-center w-full px-6">
             <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-ink-dim">

@@ -5,7 +5,7 @@ import { Sparkles } from 'lucide-react';
 import SectionTitle from '@/components/ui/SectionTitle';
 import AITwin from '@/components/ai-twin/AITwin';
 import { profile, education, certifications } from '@/lib/resume';
-import YinYangOrb from '@/components/three/YinYangOrbClient';
+import YinYangSymbol from '@/components/ui/YinYangSymbol';
 
 const principles = [
   {
@@ -51,7 +51,7 @@ export default function AboutPage() {
             transition={{ duration: 0.7 }}
             className="relative h-80 lg:h-96"
           >
-            <YinYangOrb state="idle" size="md" />
+            <YinYangSymbol state="idle" size="md" parallax />
           </motion.div>
         </div>
       </section>

@@ -3,8 +3,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { Mic, MicOff, Send, Sparkles, Square, Volume2, VolumeX, X } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
-import YinYangOrb from '@/components/three/YinYangOrbClient';
-import type { OrbState } from '@/components/three/YinYangOrb';
+import YinYangSymbol, { type OrbState } from '@/components/ui/YinYangSymbol';
 import { useVoice } from './useVoice';
 import { cn } from '@/lib/utils';
 
@@ -158,14 +157,12 @@ export default function AITwin() {
               transition={{ type: 'spring', damping: 30, stiffness: 260 }}
               className="fixed right-0 top-0 bottom-0 z-50 flex w-full max-w-md flex-col glass"
             >
-              <header className="flex items-center justify-between px-5 py-4 border-b border-white/5">
-                <div className="flex items-center gap-3">
-                  <div className="h-10 w-10">
-                    <YinYangOrb state={orbState} size="sm" />
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-semibold">Vamsi's AI Twin</h3>
-                    <p className="text-xs text-ink-muted">
+              <header className="flex items-center justify-between gap-3 px-5 py-3 border-b border-white/5 shrink-0">
+                <div className="flex items-center gap-3 min-w-0">
+                  <YinYangSymbol state={orbState} size="xs" className="flex-none !mx-0" />
+                  <div className="min-w-0">
+                    <h3 className="text-sm font-semibold truncate">Vamsi's AI Twin</h3>
+                    <p className="text-xs text-ink-muted truncate">
                       {orbState === 'thinking'
                         ? 'thinking…'
                         : orbState === 'speaking'
@@ -176,7 +173,7 @@ export default function AITwin() {
                     </p>
                   </div>
                 </div>
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-1 flex-none">
                   <button
                     onClick={() => setVoiceOut((v) => !v)}
                     className="rounded-md p-2 text-ink-muted hover:text-ink hover:bg-white/5"
@@ -242,7 +239,7 @@ export default function AITwin() {
               {/* Composer */}
               <form
                 onSubmit={handleSubmit}
-                className="border-t border-white/5 p-3 flex items-center gap-2"
+                className="border-t border-white/5 p-3 flex items-center gap-2 shrink-0"
               >
                 {supported.stt && (
                   <button

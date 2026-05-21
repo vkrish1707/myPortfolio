@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
+import ErrorBoundary from '@/components/ui/ErrorBoundary';
 import type { OrbState } from './YinYangOrb';
 
 const Orb = dynamic(() => import('./YinYangOrb'), {
@@ -12,7 +13,8 @@ const Orb = dynamic(() => import('./YinYangOrb'), {
 function OrbFallback() {
   return (
     <div className="relative h-full w-full flex items-center justify-center">
-      <div className="relative h-32 w-32 rounded-full bg-gradient-to-tr from-accent-violet/30 to-accent-cyan/30 blur-2xl orb-pulse" />
+      <div className="relative h-40 w-40 rounded-full bg-gradient-to-tr from-accent-violet/40 via-accent-cyan/30 to-accent-rose/20 blur-2xl orb-pulse" />
+      <div className="absolute h-24 w-24 rounded-full bg-gradient-to-tr from-white/80 to-black/80" />
     </div>
   );
 }
@@ -25,9 +27,25 @@ export default function YinYangOrbClient({
   size?: 'sm' | 'md' | 'lg';
 }) {
   const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
+  const [webgl, setWebgl] = useState(true);
 
-  if (!mounted) return <OrbFallback />;
+  useEffect(() => {
+    setMounted(true);
+    // Probe for WebGL support — some mobile browsers / privacy modes block it
+    try {
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('webgl2') || canvas.getContext('webgl');
+      if (!ctx) setWebgl(false);
+    } catch {
+      setWebgl(false);
+    }
+  }, []);
 
-  return <Orb state={state} size={size} />;
+  if (!mounted || !webgl) return <OrbFallback />;
+
+  return (
+    <ErrorBoundary label="YinYangOrb" fallback={() => <OrbFallback />}>
+      <Orb state={state} size={size} />
+    </ErrorBoundary>
+  );
 }

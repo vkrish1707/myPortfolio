@@ -1,8 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import Nav from '@/components/ui/Nav';
-import CustomCursor from '@/components/ui/CustomCursor';
-import MeshBackground from '@/components/ui/MeshBackground';
+import SafeChrome from '@/components/ui/SafeChrome';
 
 export const metadata: Metadata = {
   title: 'Vamsi Krishna · Senior Full Stack Developer',
@@ -33,9 +31,7 @@ export default function RootLayout({
         />
       </head>
       <body className="relative min-h-screen bg-bg text-ink antialiased">
-        <MeshBackground />
-        <CustomCursor />
-        <Nav />
+        <SafeChrome />
         <main className="relative z-10">{children}</main>
       </body>
     </html>

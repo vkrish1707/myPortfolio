@@ -2,6 +2,9 @@
   "name": "vkrish-portfolio",
   "version": "2.0.0",
   "private": true,
+  "engines": {
+    "node": ">=18.18.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -21,6 +24,7 @@
     "three": "^0.170.0"
   },
   "devDependencies": {
+    "@netlify/plugin-nextjs": "^5.9.4",
     "@types/node": "^22.9.0",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
